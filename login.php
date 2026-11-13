@@ -10,13 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
-// Conexión LOCAL (XAMPP)
-$servidor   = "localhost"; 
-$usuario    = "root";            
-$clave      = "";                
-$base_datos = "control_asistencia"; 
+// Conexión a la base de datos en la nube
+include 'conexion.php';
 
-$conexion = new mysqli($servidor, $usuario, $clave, $base_datos);
+
 
 if ($conexion->connect_error) {
     die(json_encode(array("status" => "error", "message" => "Error de conexión a la base de datos")));
